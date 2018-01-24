@@ -10,10 +10,13 @@
 */ 
 
 // note depth = 0 (no hierarchy)
-function scl_child_pages_shortcode() {
-   $id = get_the_ID();
-   $args = array( 'echo' => 0, 'depth' => 0, 'title_li' => null, 'child_of' => $id );
-   return '<ul class="childpages">' . wp_list_pages( $args ) . '</ul>';
+function scl_child_pages_shortcode( $atts=array() ) {
+	$id = get_the_ID();
+	$atts = shortcode_atts( array( 'child_of' => $id, 'depth' => 0 ), $atts );
+	$atts['title_li'] = null;
+	$atts['echo'] = 0;
+
+	return '<ul class="childpages">' . wp_list_pages( $args ) . '</ul>';
 }
 add_shortcode( 'child-pages', 'scl_child_pages_shortcode' );
 add_shortcode( 'children', 'scl_child_pages_shortcode' );
