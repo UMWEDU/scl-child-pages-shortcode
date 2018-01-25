@@ -16,7 +16,7 @@ function scl_child_pages_shortcode( $atts=array() ) {
 	$atts['title_li'] = null;
 	$atts['echo'] = 0;
 
-	return '<ul class="childpages">' . wp_list_pages( $args ) . '</ul>';
+	return '<ul class="childpages">' . wp_list_pages( $atts ) . '</ul>';
 }
 add_shortcode( 'child-pages', 'scl_child_pages_shortcode' );
 add_shortcode( 'children', 'scl_child_pages_shortcode' );
